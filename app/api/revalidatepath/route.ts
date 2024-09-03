@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
   }
   console.log(`Revalidating ${url_en} and ${url_de}`, document);
 
-  revalidatePath(url_en || "/");
+  revalidatePath(url_en.includes('home') ? "/": url_en);
   revalidatePath(url_de || "/");
 
   // This will revalidate any URL that matches the provided page file on the next page visit.
@@ -38,3 +38,13 @@ export async function POST(request: NextRequest) {
     },
   });
 }
+
+
+// "slug": {
+//   "name": {
+//     "en-US": "Home1"
+//   },
+//   "url": {
+//     "en-US": "/home"
+//   }
+// },
