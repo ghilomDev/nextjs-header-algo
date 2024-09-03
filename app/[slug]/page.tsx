@@ -6,13 +6,16 @@ export default async function randomPages({ params }: { params: { slug: string }
     content_type: "page",
     "fields.slug": params.slug
   });
+  let title:any = "random pages" 
   data.items.map((item) => {
-    console.log(item.fields)
+    title = item.fields.titlePage || 'unknow name';
   })
   return (
     <main className="flex items-center justify-center w-full h-screen m-auto">
-      <h1 className="block">Random Page</h1>
-      <p>{params.slug}</p>
+      <div>
+      <h1 className="block">title: {title}</h1>
+      <p> slug: {params.slug}</p>
+      </div>
     </main>
   )
 }
