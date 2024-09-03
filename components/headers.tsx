@@ -1,4 +1,4 @@
-export const dynamic = 'force-dynamic'
+// export const dynamic = 'force-dynamic'
 import { contentfulClient } from "../services/get-or-update";
 import   renderLinks from "./nav";
 
