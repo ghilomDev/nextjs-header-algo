@@ -1,6 +1,6 @@
-
+export const dynamic = 'force-dynamic'
 import { contentfulClient } from "../services/get-or-update";
-import { renderLinks } from "./nav";
+import   renderLinks from "./nav";
 
 const randomNavBarNames: string[] = ["Home", "About", "Services", "Contact"];
 

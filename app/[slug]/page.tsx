@@ -1,4 +1,4 @@
-import { contentfulClient } from "../services/get-or-update"
+import { contentfulClient } from "../../services/get-or-update"
 
 export default async function randomPages({ params }: { params: { slug: string } }) {
    
