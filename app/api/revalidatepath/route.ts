@@ -19,6 +19,7 @@ export async function POST(request: NextRequest) {
     headers: {
       "Access-Control-Allow-Origin": "*",
     },
+    
   });
 }
 
