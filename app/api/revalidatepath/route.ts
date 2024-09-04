@@ -12,13 +12,13 @@ export async function POST(request: NextRequest) {
   }
   console.log(`Revalidating ${document.entityId}`, document);
 
-  revalidatePath(document.entityId.includes('home') ? "/home": `/${document.entityId}`);
+  revalidatePath(document?.entityId?.includes('home') ? "/home": `/${document?.entityId}`);
   return new Response(`Revalidating ${url_en} and ${url_de}`, {
     status: 200,
     headers: {
       "Access-Control-Allow-Origin": "*",
     },
-    
+
   });
 }
 
