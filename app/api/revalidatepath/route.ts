@@ -10,10 +10,9 @@ export async function POST(request: NextRequest) {
   if (secret !== process.env.CONTENTFUL_REVALIDATE_SECRET) {
     return NextResponse.json({ message: "Invalid secret" }, { status: 401 });
   }
-  console.log(`Revalidating ${url_en} and ${url_de}`, document);
+  console.log(`Revalidating ${document.entityId}`, document);
 
-  revalidatePath(url_en.includes('home') ? "/": url_en);
-  revalidatePath(url_de || "/");
+  revalidatePath(document.entityId.includes('home') ? "/home": `/${document.entityId}`);
   return new Response(`Revalidating ${url_en} and ${url_de}`, {
     status: 200,
     headers: {
