@@ -1,4 +1,6 @@
-// export const dynamic = 'force-dynamic'
+
+export const dynamic = 'auto';
+export const dynamicParams = true;
 import { contentfulClient } from "../services/get-or-update";
 import   renderLinks from "./nav";
 

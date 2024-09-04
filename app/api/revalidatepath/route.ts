@@ -22,12 +22,3 @@ export async function POST(request: NextRequest) {
   });
 }
 
-
-// "slug": {
-//   "name": {
-//     "en-US": "Home1"
-//   },
-//   "url": {
-//     "en-US": "/home"
-//   }
-// },
