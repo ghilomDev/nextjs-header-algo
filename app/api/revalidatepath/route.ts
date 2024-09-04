@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
   }
   console.log(`Revalidating`, document);
 
-  revalidatePath(document?.entityId?.includes('home') ? "/home": `/${document?.entityId}`);
+  document?.entityId &&  revalidatePath(document?.entityId?.includes('home') ? "/home": `/${document?.entityId}`);
   return new Response(`Revalidating ${url_en} and ${url_de}`, {
     status: 200,
     headers: {
