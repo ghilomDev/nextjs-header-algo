@@ -1,7 +1,7 @@
+export const dynamic = 'force-static'
 import { contentfulClient } from "../../services/get-or-update"
-
 export default async function randomPages({ params }: { params: { slug: string } }) {
-   
+    
   const data = await contentfulClient.getEntries({
     content_type: "page",
     "fields.slug": params.slug

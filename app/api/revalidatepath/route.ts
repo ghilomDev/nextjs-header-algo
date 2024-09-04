@@ -14,23 +14,6 @@ export async function POST(request: NextRequest) {
 
   revalidatePath(url_en.includes('home') ? "/": url_en);
   revalidatePath(url_de || "/");
-
-  // This will revalidate any URL that matches the provided page file on the next page visit.
-  // This will not invalidate pages beneath the specific page.
-  // For example, /blog/[slug] won't invalidate /blog/[slug]/[author].
-
-  // revalidatePath("/blog/[slug]", "page");
-  // // or with route groups
-  // revalidatePath("/(main)/post/[slug]", "page");
-
-  // This will revalidate any URL that matches the provided layout file on the next page visit.
-  // This will cause pages beneath with the same layout to revalidate on the next visit.
-  // For example, in the above case, /blog/[slug]/[another] would also revalidate on the next visit.
-
-  // revalidatePath("/blog/[slug]", "layout");
-  // // or with route groups
-  // revalidatePath("/(main)/post/[slug]", "layout");
-
   return new Response(`Revalidating ${url_en} and ${url_de}`, {
     status: 200,
     headers: {
