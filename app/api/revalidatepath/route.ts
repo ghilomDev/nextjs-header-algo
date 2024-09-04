@@ -16,9 +16,17 @@ export async function POST(request: NextRequest) {
 
   const res = await contentfulClient.getEntries({
     content_type:document.contentType,
+    "sys.id": document.ALL.sys.id,
+    include: 3, // Level of nested references to include
+  });
+  const response = await contentfulClient.getEntries({
+    content_type:document.contentType,
+    "sys.id": document.ALL.sys.id,
     include: 3, // Level of nested references to include
   });
   console.log(res);
+console.log("_________---------------------888888*************");
+console.log(response);
   document?.entityId &&  revalidatePath(document?.entityId?.includes('home') ? "/home": `/${document?.entityId}`);
   return new Response(`Revalidating ${document}`, {
     status: 200,
