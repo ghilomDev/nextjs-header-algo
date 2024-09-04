@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { revalidatePath } from "next/cache";
+import { contentfulClient } from "@/services/get-or-update";
 
 export async function POST(request: NextRequest) {
   const secret = request.headers.get("secret");
@@ -12,8 +13,14 @@ export async function POST(request: NextRequest) {
   }
   console.log(`Revalidating`, document);
 
+
+  const res = await contentfulClient.getEntries({
+    content_type:document.contentType,
+    include: 3, // Level of nested references to include
+  });
+  console.log(res);
   document?.entityId &&  revalidatePath(document?.entityId?.includes('home') ? "/home": `/${document?.entityId}`);
-  return new Response(`Revalidating ${url_en} and ${url_de}`, {
+  return new Response(`Revalidating ${document}`, {
     status: 200,
     headers: {
       "Access-Control-Allow-Origin": "*",
