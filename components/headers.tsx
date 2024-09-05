@@ -1,4 +1,3 @@
-export const revalidate = 0 
 export const dynamicParams = true;
 import { contentfulClient } from "../services/get-or-update";
 import   renderLinks from "./nav";
@@ -17,7 +16,7 @@ export const Header = async () => {
         });
         },
         ['NavHeader'],
-        { revalidate: 0 }
+        { revalidate: 0, tags: ['NavHeader'] }
       )
     const datas:any = await getNavBar();
     const links = datas.items[0].fields.listMenu;
