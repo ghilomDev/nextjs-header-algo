@@ -1,4 +1,4 @@
-export const dynamicParams = true;
+// import { unstable_noStore as noStore } from 'next/cache';
 import { contentfulClient } from "../services/get-or-update";
 import   renderLinks from "./nav";
 import { unstable_cache } from 'next/cache'
@@ -6,7 +6,7 @@ import { unstable_cache } from 'next/cache'
 const randomNavBarNames: string[] = ["Home", "About", "Services", "Contact"];
 
 export const Header = async () => {
-   
+    // noStore();
 
     const getNavBar = unstable_cache(
         async () => {
@@ -16,10 +16,11 @@ export const Header = async () => {
         });
         },
         ['NavHeader'],
-        { revalidate: 10, tags: ['NavHeader'] }
+        {tags: ['NavHeader'] }
       )
     const datas:any = await getNavBar();
     const links = datas.items[0].fields.listMenu;
+        
     return (
         <nav className="mt-10">
             <ul className="flex w-100 justify-around">
