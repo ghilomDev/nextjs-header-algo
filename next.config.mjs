@@ -5,6 +5,9 @@ const nextConfig = {
           { source: '/', destination: '/home', permanent: true },
         ]
       },
+      experimental: {
+        ppr: true,
+      },
 
 };
 

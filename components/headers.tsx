@@ -2,23 +2,27 @@ export const dynamicParams = true;
 import { contentfulClient } from "../services/get-or-update";
 import   renderLinks from "./nav";
 import { unstable_cache } from 'next/cache'
-
+import { unstable_noStore as noStore } from "next/cache";
 const randomNavBarNames: string[] = ["Home", "About", "Services", "Contact"];
 
 export const Header = async () => {
-   
+    noStore();
 
-    const getNavBar = unstable_cache(
-        async () => {
-          return await contentfulClient.getEntries({
-            content_type: "listMenu",
-            "fields.name": "Main Menu",
-        });
-        },
-        ['NavHeader'],
-        { revalidate: 10, tags: ['NavHeader'] }
-      )
-    const datas:any = await getNavBar();
+    // const getNavBar = unstable_cache(
+    //     async () => {
+    //       return await contentfulClient.getEntries({
+    //         content_type: "listMenu",
+    //         "fields.name": "Main Menu",
+    //     });
+    //     },
+    //     ['NavHeader'],
+    //     { revalidate: 10, tags: ['NavHeader'] }
+    //   )
+    const datas = await contentfulClient.getEntries({
+        content_type: "listMenu",
+        "fields.name": "Main Menu",
+    });
+    // const datas:any = await getNavBar();
     const links = datas.items[0].fields.listMenu;
     return (
         <nav className="mt-10">
