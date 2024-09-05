@@ -1,5 +1,4 @@
 export const dynamicParams = true;
-import { Suspense } from "react";
 import { contentfulClient } from "../../services/get-or-update"
 import { Header } from "@/components/headers";
 export default async function randomPages({ params }: { params: { slug: string } }) {
@@ -14,9 +13,6 @@ export default async function randomPages({ params }: { params: { slug: string }
   })
   return (
     <>
-      <Suspense fallback={<>loadding...</>} >
-        <Header/>
-      </Suspense>
     <main className="flex items-center justify-center w-full h-screen m-auto">
       <div>
       <h1 className="block">title: {title}</h1>
