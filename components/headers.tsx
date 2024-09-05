@@ -16,7 +16,7 @@ export const Header = async () => {
         });
         },
         ['NavHeader'],
-        { revalidate: 0, tags: ['NavHeader'] }
+        { revalidate: 10, tags: ['NavHeader'] }
       )
     const datas:any = await getNavBar();
     const links = datas.items[0].fields.listMenu;
