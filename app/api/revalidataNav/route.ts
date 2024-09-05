@@ -5,11 +5,8 @@ import { contentfulClient } from "@/services/get-or-update";
 export async function POST(request: NextRequest) {
   const secret = request.headers.get("secret");
   const document = await request.json();
-  const url_en = "/en-US/" + document.slug;
-  const url_de = "/de-DE/" + document.slug;
-  console.log(`Revalidating`, document);
-  document?.entityId &&  revalidatePath(document?.entityId?.includes('home') ? "/home": `/${document?.entityId}`);
-  
+
+    revalidateTag("NavHeader");
   return new Response(`Revalidating ${document}`, {
     status: 200,
     headers: {
