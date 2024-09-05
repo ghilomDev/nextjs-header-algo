@@ -9,17 +9,17 @@ const randomNavBarNames: string[] = ["Home", "About", "Services", "Contact"];
 export const Header = async () => {
    
 
-    const getNavBar = unstable_cache(
-        async () => {
-          return await contentfulClient.getEntries({
-            content_type: "listMenu",
-            "fields.name": "Main Menu",
-        });
-        },
-        ['NavHeader'],
-        {tags: ['NavHeader'] }
-      )
-    const datas:any = await getNavBar();
+    // const getNavBar = unstable_cache(
+    //     async () => {
+          
+    //     },
+    //     ['NavHeader'],
+    //     {tags: ['NavHeader'] }
+    //   )
+    const datas:any =  await contentfulClient.getEntries({
+        content_type: "listMenu",
+        "fields.name": "Main Menu",
+    });
     const links = datas.items[0].fields.listMenu;
     return (
         <nav className="mt-10">
