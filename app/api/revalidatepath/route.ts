@@ -9,9 +9,9 @@ export async function POST(request: NextRequest) {
   const url_de = "/de-DE/" + document.slug;
 
 
-  if (document?.Navbar == 'updated'){
+
     revalidateTag("NavHeader");
-  }
+
   console.log(`Revalidating`, document);
   document?.entityId &&  revalidatePath(document?.entityId?.includes('home') ? "/home": `/${document?.entityId}`);
   
