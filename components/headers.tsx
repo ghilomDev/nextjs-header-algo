@@ -1,4 +1,3 @@
-// import { unstable_noStore as noStore } from 'next/cache';
 import { contentfulClient } from "../services/get-or-update";
 import   renderLinks from "./nav";
 import { unstable_cache } from 'next/cache'
@@ -6,7 +5,6 @@ import { unstable_cache } from 'next/cache'
 const randomNavBarNames: string[] = ["Home", "About", "Services", "Contact"];
 
 export const Header = async () => {
-    // noStore();
 
     const getNavBar = unstable_cache(
         async () => {
